@@ -135,7 +135,8 @@ body {
   box-shadow: 0 25px 50px -12px var(--shadow-color);
   border-radius: 24px;
   width: 80%;
-  height: 60%;
+ min-height: 460px; /* instead of fixed height */
+  height: auto;
   padding: 3.5rem;
   display: flex;
   flex-direction: column;

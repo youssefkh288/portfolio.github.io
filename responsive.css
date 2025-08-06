@@ -112,44 +112,47 @@
         font-size: 2.2rem;
     }
 
-  .about-card {
-  width: 100%;
-  max-width: 600px;
-  padding: 1.5rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-  height:70vh;
-}
+    .about-card {
+        width: 100%;
+        max-width: 600px;
+        padding: 1.5rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        height: 70vh;
+        min-height: auto;
+        padding: 2rem 1.5rem;
+    }
 
-  .btn-group {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-}
+    .btn-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
 
-   .btn {
-  width: 70%;
-  max-width: 300px; /* LIMIT the button width so it doesn’t stretch too wide */
-  padding: 0.8rem 1rem;
-  font-size: 0.8rem;
-  text-align: center;
-  box-sizing: border-box;
-}
+    .btn {
+        width: 70%;
+        max-width: 300px;
+        /* LIMIT the button width so it doesn’t stretch too wide */
+        padding: 0.8rem 1rem;
+        font-size: 0.8rem;
+        text-align: center;
+        box-sizing: border-box;
+    }
 
 
 
     .btn a {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-}
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+    }
 
 }
 
