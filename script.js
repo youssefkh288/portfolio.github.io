@@ -1,28 +1,61 @@
+// Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const icon = themeToggle.querySelector('i');
+
+// Check saved theme preference
 if (localStorage.getItem('theme') === 'light') {
-    document.body.classList.add('light-theme');
-    icon.classList.replace('fa-moon', 'fa-sun');
+  document.body.classList.add('light-theme');
+  icon.classList.replace('fa-moon', 'fa-sun');
 }
 
+// Toggle theme
 themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    const isLight = document.body.classList.contains('light-theme');
-    icon.classList.toggle('fa-moon');
-    icon.classList.toggle('fa-sun');
-
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  document.body.classList.toggle('light-theme');
+  const isLight = document.body.classList.contains('light-theme');
+  
+  icon.classList.toggle('fa-moon');
+  icon.classList.toggle('fa-sun');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
 });
 
-function copyToClipboard(text, type) {
-    const card = event.currentTarget;
-    const actualText = card.dataset.copyValue || text;
+// Mobile Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navList = document.querySelector('.nav-list');
 
-    navigator.clipboard.writeText(actualText).then(() => {
-        card.classList.add('copied');
-        setTimeout(() => card.classList.remove('copied'), 2000);
-    }).catch(err => {
-        console.error('Copy failed:', err);
-        alert(`Failed to copy ${type}. Please try again.`);
-    });
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navList.classList.toggle('show');
+});
+
+// Close menu when clicking links
+document.querySelectorAll('.nav-list a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navList.classList.remove('show');
+
+  });
+});
+
+// Copy to Clipboard Function
+function copyToClipboard(text, type) {
+  const card = event.currentTarget;
+  const cleanText = type === 'Phone' 
+    ? card.dataset.copyValue || text.replace(/[^\d+]/g, '')
+    : text;
+
+  navigator.clipboard.writeText(cleanText).then(() => {
+    card.classList.add('copied');
+    setTimeout(() => card.classList.remove('copied'), 2000);
+  }).catch(err => {
+    console.error('Copy failed:', err);
+    // Fallback for older browsers
+    const textarea = document.createElement('textarea');
+    textarea.value = cleanText;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    card.classList.add('copied');
+    setTimeout(() => card.classList.remove('copied'), 2000);
+  });
 }
