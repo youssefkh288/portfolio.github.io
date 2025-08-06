@@ -154,6 +154,12 @@
         color: inherit;
     }
 
+    .skill-box {
+        border-color: var(--accent-primary);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+
+    }
 }
 
 /* Tablet Styles (768px-1023px) */
@@ -168,5 +174,11 @@
 
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-box {
+        border-color: var(--accent-primary);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
     }
 }
