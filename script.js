@@ -12,7 +12,7 @@ if (localStorage.getItem('theme') === 'light') {
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('light-theme');
   const isLight = document.body.classList.contains('light-theme');
-  
+
   icon.classList.toggle('fa-moon');
   icon.classList.toggle('fa-sun');
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
@@ -32,14 +32,13 @@ document.querySelectorAll('.nav-list a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navList.classList.remove('show');
-
   });
 });
 
 // Copy to Clipboard Function
 function copyToClipboard(text, type) {
   const card = event.currentTarget;
-  const cleanText = type === 'Phone' 
+  const cleanText = type === 'Phone'
     ? card.dataset.copyValue || text.replace(/[^\d+]/g, '')
     : text;
 
@@ -59,3 +58,40 @@ function copyToClipboard(text, type) {
     setTimeout(() => card.classList.remove('copied'), 2000);
   });
 }
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Add hover effects to project cards
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-8px)';
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0)';
+  });
+});
+
+// Project link interactions
+document.querySelectorAll('.project-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Add a small delay for visual feedback
+    setTimeout(() => {
+      // You can add actual project URLs here
+      console.log('Project link clicked:', this.href);
+    }, 150);
+  });
+});
