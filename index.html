@@ -139,6 +139,7 @@
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
+            <span>Formspree</span>
           </div>
         </div>
       </div>
@@ -261,31 +262,81 @@
       <h2 class="section-title">Get In Touch</h2>
       <p class="contact-subtitle">I'm currently open to new opportunities and collaborations</p>
 
-      <div class="contact-methods">
-        <div class="contact-card" onclick="copyToClipboard('youkhaled288@gmail.com', 'Email')">
-          <i class="fas fa-envelope"></i>
-          <h3>Email</h3>
-          <p>youkhaled288@gmail.com</p>
-          <span class="copy-notification">Copied to clipboard!</span>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <p>Feel free to reach out through any of these channels or send me a message directly using the form.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-card" onclick="copyToClipboard('youkhaled288@gmail.com', 'Email')">
+              <i class="fas fa-envelope"></i>
+              <div class="contact-card-content">
+                <h4>Email</h4>
+                <p>Click to copy</p>
+              </div>
+              <span class="copy-notification">Copied to clipboard!</span>
+            </div>
+
+            <div class="contact-card" onclick="copyToClipboard('+201147142218', 'Phone')" data-copy-value="+201147142218">
+              <i class="fas fa-phone"></i>
+              <div class="contact-card-content">
+                <h4>Phone</h4>
+                <p>Click to copy</p>
+              </div>
+              <span class="copy-notification">Copied to clipboard!</span>
+            </div>
+
+            <div class="contact-card" onclick="window.open('https://www.linkedin.com/in/youssef-khaled-036321320/', '_blank')">
+              <i class="fab fa-linkedin-in"></i>
+              <div class="contact-card-content">
+                <h4>LinkedIn</h4>
+                <p>Connect professionally</p>
+              </div>
+            </div>
+
+            <div class="contact-card" onclick="window.open('https://wa.link/sc86vg', '_blank')">
+              <i class="fab fa-whatsapp"></i>
+              <div class="contact-card-content">
+                <h4>WhatsApp</h4>
+                <p>Message me directly</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="contact-card" onclick="copyToClipboard('+201147142218', 'Phone')" data-copy-value="+201147142218">
-          <i class="fas fa-phone"></i>
-          <h3>Phone</h3>
-          <p>+2 011 4714 2218</p>
-          <span class="copy-notification">Copied to clipboard!</span>
-        </div>
-
-        <div class="contact-card" onclick="window.open('https://www.linkedin.com/in/youssef-khaled-036321320/', '_blank')">
-          <i class="fab fa-linkedin-in"></i>
-          <h3>LinkedIn</h3>
-          <p>Connect professionally</p>
-        </div>
-
-        <div class="contact-card" onclick="window.open('https://wa.link/sc86vg', '_blank')">
-          <i class="fab fa-whatsapp"></i>
-          <h3>WhatsApp</h3>
-          <p>Message me directly</p>
+        <div class="contact-form-container">
+          <h3>Send Me a Message</h3>
+          <form id="contact-form" class="contact-form" action="https://formspree.io/f/mqalgbaz" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">
+              <span class="btn-text">Send Message</span>
+              <span class="btn-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                Sending...
+              </span>
+            </button>
+          </form>
+          
+          <div id="form-status" class="form-status"></div>
         </div>
       </div>
     </div>

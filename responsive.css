@@ -207,21 +207,62 @@
         padding: 4rem 1rem;
     }
 
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .contact-info h3 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .contact-info p {
+        text-align: center;
+        font-size: 0.95rem;
+    }
+
     .contact-methods {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
     .contact-card {
-        padding: 1.5rem;
+        padding: 1.6rem;
+        min-height: 80px;
     }
 
-    .contact-card h3 {
-        font-size: 1.2rem;
+    .contact-card i {
+        font-size: 1.5rem;
+        width: 24px;
+    }
+
+    .contact-card h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
     }
 
     .contact-card p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    .contact-form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-form-container h3 {
+        font-size: 1.6rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.7rem 0.8rem;
+    }
+
+    .submit-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -258,6 +299,14 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
+
+    .contact-content {
+        gap: 3rem;
+    }
+
+    .contact-form-container {
+        padding: 2rem;
+    }
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
@@ -268,6 +317,23 @@
 
     .skills-grid {
         gap: 2.5rem;
+    }
+
+    .contact-content {
+        align-items: stretch;
+    }
+
+    .contact-methods {
+        gap: 1.5rem;
+    }
+
+    .contact-card {
+        padding: 2rem;
+        min-height: 90px;
+    }
+
+    .contact-form-container {
+        min-height: 450px;
     }
 }
 
@@ -284,5 +350,28 @@
     .contact-methods {
         grid-template-columns: repeat(4, 1fr);
         gap: 2.5rem;
+    }
+
+    .contact-card {
+        padding: 2.8rem;
+        min-height: 130px;
+    }
+
+    .contact-card i {
+        font-size: 2.2rem;
+        width: 36px;
+    }
+
+    .contact-card h4 {
+        font-size: 1.4rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .contact-card p {
+        font-size: 1.2rem;
+    }
+
+    .contact-form-container {
+        min-height: 550px;
     }
 }

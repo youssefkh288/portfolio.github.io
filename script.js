@@ -88,10 +88,76 @@ document.querySelectorAll('.project-card').forEach(card => {
 document.querySelectorAll('.project-link').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
-    // Add a small delay for visual feedback
     setTimeout(() => {
-      // You can add actual project URLs here
       console.log('Project link clicked:', this.href);
     }, 150);
   });
 });
+
+// Contact Form Handling for Formspree
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+const submitBtn = contactForm.querySelector('.submit-btn');
+
+contactForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  // Get form data
+  const formData = new FormData(contactForm);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const subject = formData.get('subject');
+  const message = formData.get('message');
+  
+  // Validate form
+  if (!name || !email || !subject || !message) {
+    showFormStatus('Please fill in all fields.', 'error');
+    return;
+  }
+  
+  // Show loading state
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  
+  try {
+    // Submit to Formspree
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        subject: subject,
+        message: message
+      })
+    });
+    
+    if (response.ok) {
+      showFormStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
+      contactForm.reset();
+    } else {
+      throw new Error('Failed to send message');
+    }
+  } catch (error) {
+    console.error('Form submission error:', error);
+    showFormStatus('Failed to send message. Please try again or contact me directly.', 'error');
+  } finally {
+    // Reset button state
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+  }
+});
+
+function showFormStatus(message, type) {
+  formStatus.textContent = message;
+  formStatus.className = `form-status ${type}`;
+  
+  // Auto-hide success messages after 5 seconds
+  if (type === 'success') {
+    setTimeout(() => {
+      formStatus.style.display = 'none';
+    }, 5000);
+  }
+}
